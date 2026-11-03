@@ -1,0 +1,93 @@
+
+services:
+  mongo:
+    image: mongo:8.0
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:27018:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+ 
+
+  redis:
+    image: redis:8-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+  api:
+    image: idp-backend:local
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/?retryWrites=true&w=majority
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      FILE_STORAGE_PATH: /app/storage
+      MODEL_ASSETS_PATH: /app/app/assets/models
+      # Prefer Paddle's BOS model mirror over the default Hugging Face source.
+      PADDLE_PDX_MODEL_SOURCE: ${PADDLE_PDX_MODEL_SOURCE:-bos}
+      # Persist downloaded detection/recognition models across container rebuilds.
+      PADDLE_PDX_CACHE_HOME: /app/model_cache
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./storage:/app/storage
+      - ./model_cache:/app/model_cache
+    depends_on:
+      mongo:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  worker:
+    image: idp-backend:local
+    restart: unless-stopped
+    command:
+      - celery
+      - -A
+      - run.celery_app
+      - worker
+      - --loglevel=INFO
+      - --concurrency=2
+    env_file: .env
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/?retryWrites=true&w=majority
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      FILE_STORAGE_PATH: /app/storage
+      MODEL_ASSETS_PATH: /app/app/assets/models
+      # Prefer Paddle's BOS model mirror over the default Hugging Face source.
+      PADDLE_PDX_MODEL_SOURCE: ${PADDLE_PDX_MODEL_SOURCE:-bos}
+      # Persist downloaded detection/recognition models across container rebuilds.
+      PADDLE_PDX_CACHE_HOME: /app/model_cache
+    volumes:
+      - ./storage:/app/storage
+      - ./model_cache:/app/model_cache
+    depends_on:
+      mongo:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      api:
+        condition: service_started
+
+volumes:
+  mongo_data:
+  redis_data:

@@ -1,0 +1,18 @@
+# Local runtime data and potentially large downloaded OCR models
+.env
+.env.*
+!.env.example
+storage/
+model_cache/
+
+# Python/runtime artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# VCS/editor files
+.git/
+.vscode/
+.idea/

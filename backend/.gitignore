@@ -1,0 +1,14 @@
+# Secrets and local runtime data
+.env
+.env.*
+!.env.example
+storage/
+model_cache/*
+!model_cache/.gitkeep
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/

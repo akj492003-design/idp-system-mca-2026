@@ -1,0 +1,403 @@
+{
+  "dataset": {
+    "source": "supplied ml_dl(3).ipynb and idp_outputs(2).zip",
+    "split": "held-out test set",
+    "test_samples": 1349,
+    "classes": [
+      "form",
+      "invoice",
+      "resume"
+    ],
+    "class_support": {
+      "form": 449,
+      "invoice": 449,
+      "resume": 451
+    },
+    "note": "Metrics are offline test-set results. They are not a guarantee of accuracy on newly uploaded documents.",
+    "confusion_matrix_source": "Recomputed from the supplied per-document held-out test prediction CSVs; rows=true labels, columns=predicted labels."
+  },
+  "text_models": [
+    {
+      "model": "Logistic Regression",
+      "family": "Traditional ML / TF-IDF",
+      "accuracy": 0.955522609340252,
+      "precision": 0.9559254930557636,
+      "recall": 0.955492784326507,
+      "f1_score": 0.955648585432713,
+      "test_samples": 1349,
+      "classification_report": {
+        "form": {
+          "precision": 0.9317180616740088,
+          "recall": 0.9420935412026726,
+          "f1_score": 0.9368770764119602,
+          "support": 449
+        },
+        "invoice": {
+          "precision": 0.9383259911894273,
+          "recall": 0.9487750556792873,
+          "f1_score": 0.9435215946843853,
+          "support": 449
+        },
+        "resume": {
+          "precision": 0.9977324263038548,
+          "recall": 0.975609756097561,
+          "f1_score": 0.9865470852017937,
+          "support": 451
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "form",
+          "invoice",
+          "resume"
+        ],
+        "rows": [
+          [
+            423,
+            25,
+            1
+          ],
+          [
+            23,
+            426,
+            0
+          ],
+          [
+            8,
+            3,
+            440
+          ]
+        ],
+        "orientation": "rows=true labels; columns=predicted labels"
+      }
+    },
+    {
+      "model": "Linear SVM",
+      "family": "Traditional ML / TF-IDF",
+      "accuracy": 0.9532987398072647,
+      "precision": 0.9533870305271724,
+      "recall": 0.9532491518476635,
+      "f1_score": 0.9533109792312949,
+      "test_samples": 1349,
+      "selected_model": true,
+      "selection_basis": "highest validation macro-F1 in the supplied notebook",
+      "classification_report": {
+        "form": {
+          "precision": 0.9269911504424779,
+          "recall": 0.933184855233853,
+          "f1_score": 0.93007769145394,
+          "support": 449
+        },
+        "invoice": {
+          "precision": 0.9398663697104677,
+          "recall": 0.9398663697104677,
+          "f1_score": 0.9398663697104677,
+          "support": 449
+        },
+        "resume": {
+          "precision": 0.9933035714285714,
+          "recall": 0.9866962305986696,
+          "f1_score": 0.9899888765294772,
+          "support": 451
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "form",
+          "invoice",
+          "resume"
+        ],
+        "rows": [
+          [
+            419,
+            27,
+            3
+          ],
+          [
+            27,
+            422,
+            0
+          ],
+          [
+            6,
+            0,
+            445
+          ]
+        ],
+        "orientation": "rows=true labels; columns=predicted labels"
+      }
+    },
+    {
+      "model": "KNN Cosine",
+      "family": "Traditional ML / TF-IDF",
+      "accuracy": 0.9466271312083024,
+      "precision": 0.946994825474781,
+      "recall": 0.9465676373710488,
+      "f1_score": 0.9465321201490197,
+      "test_samples": 1349,
+      "classification_report": {
+        "form": {
+          "precision": 0.9375,
+          "recall": 0.9020044543429844,
+          "f1_score": 0.9194097616345063,
+          "support": 449
+        },
+        "invoice": {
+          "precision": 0.9123931623931624,
+          "recall": 0.9510022271714922,
+          "f1_score": 0.9312977099236641,
+          "support": 449
+        },
+        "resume": {
+          "precision": 0.9910913140311804,
+          "recall": 0.9866962305986696,
+          "f1_score": 0.9888888888888889,
+          "support": 451
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "form",
+          "invoice",
+          "resume"
+        ],
+        "rows": [
+          [
+            405,
+            40,
+            4
+          ],
+          [
+            22,
+            427,
+            0
+          ],
+          [
+            5,
+            1,
+            445
+          ]
+        ],
+        "orientation": "rows=true labels; columns=predicted labels"
+      }
+    },
+    {
+      "model": "Multinomial Naive Bayes",
+      "family": "Traditional ML / TF-IDF",
+      "accuracy": 0.9266123054114158,
+      "precision": 0.9289312106138987,
+      "recall": 0.9265494315198265,
+      "f1_score": 0.9265548907290048,
+      "test_samples": 1349,
+      "classification_report": {
+        "form": {
+          "precision": 0.9299516908212561,
+          "recall": 0.8574610244988864,
+          "f1_score": 0.8922363847045192,
+          "support": 449
+        },
+        "invoice": {
+          "precision": 0.8681541582150102,
+          "recall": 0.9532293986636972,
+          "f1_score": 0.9087048832271762,
+          "support": 449
+        },
+        "resume": {
+          "precision": 0.9886877828054299,
+          "recall": 0.9689578713968958,
+          "f1_score": 0.9787234042553191,
+          "support": 451
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "form",
+          "invoice",
+          "resume"
+        ],
+        "rows": [
+          [
+            385,
+            60,
+            4
+          ],
+          [
+            20,
+            428,
+            1
+          ],
+          [
+            9,
+            5,
+            437
+          ]
+        ],
+        "orientation": "rows=true labels; columns=predicted labels"
+      }
+    }
+  ],
+  "image_models": [
+    {
+      "model": "ResNet18",
+      "family": "Deep Learning / PaddlePaddle",
+      "accuracy": 0.8917716827279466,
+      "precision": 0.8947055699300916,
+      "recall": 0.8916735391285883,
+      "f1_score": 0.890916527863677,
+      "test_samples": 1349,
+      "classification_report": {
+        "form": {
+          "precision": 0.8934010152284264,
+          "recall": 0.7839643652561247,
+          "f1_score": 0.8351126927639383,
+          "support": 449
+        },
+        "invoice": {
+          "precision": 0.8264299802761341,
+          "recall": 0.933184855233853,
+          "f1_score": 0.8765690376569037,
+          "support": 449
+        },
+        "resume": {
+          "precision": 0.9642857142857143,
+          "recall": 0.9578713968957872,
+          "f1_score": 0.9610678531701891,
+          "support": 451
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "form",
+          "invoice",
+          "resume"
+        ],
+        "rows": [
+          [
+            352,
+            85,
+            12
+          ],
+          [
+            26,
+            419,
+            4
+          ],
+          [
+            16,
+            3,
+            432
+          ]
+        ],
+        "orientation": "rows=true labels; columns=predicted labels"
+      }
+    },
+    {
+      "model": "EfficientNet-B0",
+      "family": "Deep Learning / PyTorch",
+      "accuracy": 0.8042994810971089,
+      "precision": 0.8059601844330775,
+      "recall": 0.8040879214218343,
+      "f1_score": 0.8000007943411139,
+      "test_samples": 1349,
+      "classification_report": {
+        "form": {
+          "precision": 0.8153409090909091,
+          "recall": 0.6391982182628062,
+          "f1_score": 0.7166042446941323,
+          "support": 449
+        },
+        "invoice": {
+          "precision": 0.7346534653465346,
+          "recall": 0.8262806236080178,
+          "f1_score": 0.7777777777777778,
+          "support": 449
+        },
+        "resume": {
+          "precision": 0.8678861788617886,
+          "recall": 0.9467849223946785,
+          "f1_score": 0.9056203605514316,
+          "support": 451
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "form",
+          "invoice",
+          "resume"
+        ],
+        "rows": [
+          [
+            287,
+            125,
+            37
+          ],
+          [
+            50,
+            371,
+            28
+          ],
+          [
+            15,
+            9,
+            427
+          ]
+        ],
+        "orientation": "rows=true labels; columns=predicted labels"
+      }
+    },
+    {
+      "model": "MobileNetV2",
+      "family": "Deep Learning / PaddlePaddle",
+      "accuracy": 0.7783543365455893,
+      "precision": 0.7845736387132218,
+      "recall": 0.7782458184978691,
+      "f1_score": 0.7805836351685986,
+      "test_samples": 1349,
+      "classification_report": {
+        "form": {
+          "precision": 0.6914893617021277,
+          "recall": 0.7238307349665924,
+          "f1_score": 0.7072905331882481,
+          "support": 449
+        },
+        "invoice": {
+          "precision": 0.7301927194860813,
+          "recall": 0.7594654788418709,
+          "f1_score": 0.7445414847161572,
+          "support": 449
+        },
+        "resume": {
+          "precision": 0.9320388349514563,
+          "recall": 0.8514412416851441,
+          "f1_score": 0.8899188876013905,
+          "support": 451
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "form",
+          "invoice",
+          "resume"
+        ],
+        "rows": [
+          [
+            325,
+            105,
+            19
+          ],
+          [
+            99,
+            341,
+            9
+          ],
+          [
+            46,
+            21,
+            384
+          ]
+        ],
+        "orientation": "rows=true labels; columns=predicted labels"
+      }
+    }
+  ]
+}

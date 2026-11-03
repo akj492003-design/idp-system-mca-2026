@@ -1,0 +1,48 @@
+{
+  "model": "ResNet18",
+  "checkpoint": "C:\\Users\\ashis\\OneDrive\\Desktop\\idp project\\idp_outputs\\models\\best_document_classifier.pdparams",
+  "test_samples": 1349,
+  "test_accuracy": 0.8917716827279466,
+  "macro_precision": 0.8947055699300916,
+  "macro_recall": 0.8916735391285883,
+  "macro_f1": 0.890916527863677,
+  "class_names": [
+    "form",
+    "invoice",
+    "resume"
+  ],
+  "preprocessing_assumption": "RGB, 224x224, [0,1] scaling, ImageNet mean/std",
+  "classification_report": {
+    "form": {
+      "precision": 0.8934010152284264,
+      "recall": 0.7839643652561247,
+      "f1-score": 0.8351126927639383,
+      "support": 449.0
+    },
+    "invoice": {
+      "precision": 0.8264299802761341,
+      "recall": 0.933184855233853,
+      "f1-score": 0.8765690376569037,
+      "support": 449.0
+    },
+    "resume": {
+      "precision": 0.9642857142857143,
+      "recall": 0.9578713968957872,
+      "f1-score": 0.9610678531701891,
+      "support": 451.0
+    },
+    "accuracy": 0.8917716827279466,
+    "macro avg": {
+      "precision": 0.8947055699300916,
+      "recall": 0.8916735391285883,
+      "f1-score": 0.890916527863677,
+      "support": 1349.0
+    },
+    "weighted avg": {
+      "precision": 0.8948087280388471,
+      "recall": 0.8917716827279466,
+      "f1-score": 0.891020532793709,
+      "support": 1349.0
+    }
+  }
+}

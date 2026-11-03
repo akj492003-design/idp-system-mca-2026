@@ -1,0 +1,48 @@
+{
+  "model": "MobileNetV2",
+  "device": "gpu",
+  "test_samples": 1349,
+  "best_validation_accuracy": 0.7613046701260193,
+  "test_accuracy": 0.7783543365455893,
+  "macro_precision": 0.7845736387132218,
+  "macro_recall": 0.7782458184978691,
+  "macro_f1": 0.7805836351685986,
+  "class_names": [
+    "form",
+    "invoice",
+    "resume"
+  ],
+  "classification_report": {
+    "form": {
+      "precision": 0.6914893617021277,
+      "recall": 0.7238307349665924,
+      "f1-score": 0.7072905331882481,
+      "support": 449.0
+    },
+    "invoice": {
+      "precision": 0.7301927194860813,
+      "recall": 0.7594654788418709,
+      "f1-score": 0.7445414847161572,
+      "support": 449.0
+    },
+    "resume": {
+      "precision": 0.9320388349514563,
+      "recall": 0.8514412416851441,
+      "f1-score": 0.8899188876013905,
+      "support": 451.0
+    },
+    "accuracy": 0.7783543365455893,
+    "macro avg": {
+      "precision": 0.7845736387132218,
+      "recall": 0.7782458184978691,
+      "f1-score": 0.7805836351685986,
+      "support": 1349.0
+    },
+    "weighted avg": {
+      "precision": 0.7847922676179487,
+      "recall": 0.7783543365455893,
+      "f1-score": 0.7807457333931097,
+      "support": 1349.0
+    }
+  }
+}
